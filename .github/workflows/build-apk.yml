@@ -17,15 +17,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Check project files
+      - name: Install Android SDK tools
         run: |
-          echo "Checking repository..."
+          sudo apt-get update
+          sudo apt-get install -y android-sdk
+          echo "ANDROID_HOME=/usr/lib/android-sdk" >> "$GITHUB_ENV"
+
+      - name: Check project
+        run: |
           ls -la
-          if [ ! -f settings.gradle ] && [ ! -f settings.gradle.kts ] && [ ! -d app ]; then
-            echo "Android Gradle project is missing."
-            echo "This repository currently contains web files, not a complete Android project."
-            exit 1
-          fi
+          test -f settings.gradle.kts || test -f settings.gradle
