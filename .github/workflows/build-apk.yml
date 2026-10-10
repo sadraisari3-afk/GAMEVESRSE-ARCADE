@@ -1,0 +1,31 @@
+
+name: Build GAMEVERSE ARCADE APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Check project files
+        run: |
+          echo "Checking repository..."
+          ls -la
+          if [ ! -f settings.gradle ] && [ ! -f settings.gradle.kts ] && [ ! -d app ]; then
+            echo "Android Gradle project is missing."
+            echo "This repository currently contains web files, not a complete Android project."
+            exit 1
+          fi
