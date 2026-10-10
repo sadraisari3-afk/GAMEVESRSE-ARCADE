@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "GAMEVERSE ARCADE — 100 Offline Games",
+  "short_name": "GV Arcade",
+  "description": "مجموعهٔ ۱۰۰ بازی آفلاین",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111319",
+  "theme_color": "#111319",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
